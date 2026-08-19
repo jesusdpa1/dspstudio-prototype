@@ -3,6 +3,22 @@
 A professional-grade distributed data plane and DSP workbench designed for massive neural recordings (16+ channels @ 40kHz+). Built with Rust, Zarr v3, and memory-mapped synchronization.
 
 ---
+This project used Rerun as a blueprint for the UI/UX design. 
+
+## Sample images
+### Main View
+![Main View](resources/img/01-main.png)
+### Signal Viewer
+![Signal Viewer](resources/img/02-signal-viewer.png)
+### Annotations
+![Annotations](resources/img/03-annotations.png)
+### Node Graph
+![Node Graph](resources/img/04-node-graph.png)
+### Processing
+![Processing](resources/img/05-processing.png)
+### Focus View
+![Focus View](resources/img/06-focus.png)
+
 
 ## 🏗 Modular Architecture
 
