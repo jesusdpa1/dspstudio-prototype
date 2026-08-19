@@ -1,0 +1,21 @@
+# dsp-core/Cargo.toml
+#
+# Library crate — pure data layer.
+# Zero egui dependency. Can be compiled and tested without a display.
+
+[package]
+name    = "dsp-core"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rustfft     = "6.2"
+realfft     = "3.3"
+rayon       = { workspace = true }
+uuid        = { workspace = true }
+num-complex = { workspace = true }
+slotmap     = { workspace = true }
+serde       = { workspace = true, features = ["derive"] }
+
+[dev-dependencies]
+approx = "0.5"

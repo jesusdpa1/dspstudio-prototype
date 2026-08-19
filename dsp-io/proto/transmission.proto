@@ -1,0 +1,149 @@
+syntax = "proto3";
+
+package dsp_studio.transmission;
+
+// --- Identifiers ---
+
+message ChannelId {
+    oneof kind {
+        uint32 physical = 1;
+        string virtual = 2;
+    }
+}
+
+message VirtualChannelMeta {
+    string name = 1;
+    uint32 source_channel_idx = 2;
+    string created_at = 3;
+}
+
+message TrackMeta {
+    string name = 1;
+    repeated uint32 channel_indices = 2;
+    bool is_events = 3; // Simplified for now: stream vs epochs
+    repeated string labels = 4; // Label vocabulary
+}
+
+// --- Metadata ---
+
+message RecordingMeta {
+    string session_id = 1;
+    string recording_name = 2;
+    string recording_type = 3;
+    string description = 4;
+    float sample_rate = 5;
+    uint32 n_channels = 6;
+    uint64 total_samples = 7;
+    repeated string channel_names = 8;
+    repeated uint32 lod_levels_available = 9;
+    string created_at = 10;
+    repeated VirtualChannelMeta virtual_channels = 11;
+    repeated TrackMeta tracks = 12;
+}
+
+// --- Streaming (UI) ---
+
+message ViewRequest {
+    string zarr_path = 1;
+    uint64 start_sample = 2;
+    uint64 count = 3;
+    uint32 width_px = 4;
+    repeated ChannelId channels = 5;
+}
+
+message ViewResponse {
+    repeated float data = 1; // Flat channel-major buffer
+    uint32 lod_level = 2;
+    uint64 decimation_ratio = 3;
+    uint64 points_per_channel = 4;
+    repeated ChannelId channels_returned = 5;
+    // First sample actually included after LOD-boundary snapping. Use this as
+    // the x-axis origin instead of recomputing it client-side.
+    uint64 actual_start = 6;
+}
+
+// --- Epochs ---
+
+message Event {
+    uint64 sample_offset = 1;
+    uint32 label_id = 2;
+}
+
+message FetchEventsRequest {
+    string zarr_path = 1;
+    string track_name = 2;
+    uint32 channel_idx = 3;
+    uint64 start_sample = 4;
+    uint64 end_sample = 5; // Use 0 for "until the end"
+}
+
+message FetchEventsResponse {
+    repeated Event events = 1;
+}
+
+message FetchClusterDataRequest {
+    string zarr_path = 1;
+    string track_name = 2;
+    uint32 label_id = 3;
+    uint32 max_waveforms = 4;
+    uint32 snippet_before = 5;
+    uint32 snippet_after = 6;
+}
+
+message FetchClusterDataResponse {
+    uint32 label_id = 1;
+    repeated float pca_pc1 = 2;
+    repeated float pca_pc2 = 3;
+    repeated float waveforms = 4; // Flat: [n_spikes * snippet_len]
+    repeated float mean_waveform = 5;
+    repeated float std_waveform = 6;
+    uint32 snippet_len = 7;
+    uint32 n_spikes = 8;
+}
+
+// --- Processing ---
+
+message RunGraphRequest {
+    string zarr_path = 1;
+    string graph_spec_json = 2;
+    uint64 total_samples = 3;
+    uint64 batch_size = 4;
+    uint64 surplus = 5;
+    uint64 start_sample = 6;
+    uint64 count = 7;
+}
+
+message ProcessingProgress {
+    float progress = 1;
+    string message = 2;
+}
+
+message ProcessingComplete {
+    repeated VirtualChannelMeta virtual_channels = 1;
+}
+
+message ProcessingResponse {
+    oneof event {
+        ProcessingProgress progress = 1;
+        ProcessingComplete complete = 2;
+    }
+}
+
+// --- Services ---
+
+service TransmissionService {
+    rpc OpenFile(OpenFileRequest) returns (RecordingMeta);
+    rpc SaveMetadata(SaveMetadataRequest) returns (Empty);
+
+    rpc FetchView(ViewRequest) returns (ViewResponse);
+    rpc FetchRaw(ViewRequest) returns (ViewResponse);
+
+    rpc FetchEvents(FetchEventsRequest) returns (FetchEventsResponse);
+    rpc FetchClusterData(FetchClusterDataRequest) returns (FetchClusterDataResponse);
+
+    rpc RunProcessingGraph(RunGraphRequest) returns (stream ProcessingResponse);
+}
+
+message OpenFileRequest { string path = 1; }
+message SaveMetadataRequest { string zarr_path = 1; RecordingMeta meta = 2; }
+message Empty {}

@@ -1,0 +1,1524 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>DSP-Studio</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-cbff8826.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-076ae050.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">DSP-Studio</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="dsp-studio"><a class="header" href="#dsp-studio">DSP Studio</a></h1>
+<p>A desktop application for visualizing and processing neural and biomedical recordings — EMG, EEG, ECG, and similar multi-channel time-series signals.</p>
+<p>Built with Rust, <a href="https://github.com/emilk/egui">egui</a>, and <a href="https://zarr.dev/">Zarr v3</a> storage.</p>
+<hr>
+<h2 id="what-it-does"><a class="header" href="#what-it-does">What it does</a></h2>
+<ul>
+<li><strong>Opens</strong> large multi-channel recordings stored as Zarr v3 archives (hours of 40 kHz data, 16+ channels).</li>
+<li><strong>Visualizes</strong> recordings at any zoom level using a pre-built LOD pyramid — rendering 1 hour of data is as fast as rendering 1 second.</li>
+<li><strong>Processes</strong> signals through a serializable node graph (arithmetic, filtering, custom kernels) and stores results as virtual channels alongside the original data.</li>
+<li><strong>Serves</strong> all of the above over gRPC so a headless server (<code>dsp-cli</code>) can drive a remote UI or a Python analysis script.</li>
+</ul>
+<hr>
+<h2 id="quick-start"><a class="header" href="#quick-start">Quick start</a></h2>
+<pre><code class="language-bash"># Generate a 1-hour synthetic neural recording for testing
+cargo run -p lab --bin lab_neural_generation
+
+# Run the GUI (opens the recording above)
+cargo run -p dsp-app --release
+
+# Start a headless gRPC server
+cargo run -p dsp-cli -- --serve [::1]:50051
+
+# Run the end-to-end gRPC correctness test
+cargo run -p lab --bin lab_10_grpc_e2e
+</code></pre>
+<hr>
+<h2 id="where-to-go-next"><a class="header" href="#where-to-go-next">Where to go next</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Goal</th><th>Chapter</th></tr>
+</thead>
+<tbody>
+<tr><td>Understand the workspace crates and their roles</td><td><a href="#workspace-overview">Workspace Overview</a></td></tr>
+<tr><td>Learn how data is stored (Zarr, LOD pyramids, virtual channels)</td><td><a href="#storage-foundation">Storage Foundation</a></td></tr>
+<tr><td>Write code that reads or writes recording data</td><td><a href="#data-access-guide">Data Access Guide</a></td></tr>
+<tr><td>Build or run a DSP processing graph</td><td><a href="#processing-graph">Processing Graph</a></td></tr>
+<tr><td>Use the gRPC API from Rust or another language</td><td><a href="#grpc-api">gRPC API</a></td></tr>
+<tr><td>Understand the pure DSP primitives</td><td><a href="#dsp-core-api">dsp-core API</a></td></tr>
+<tr><td>Understand how the egui app is structured</td><td><a href="#ui-architecture">UI Architecture</a></td></tr>
+</tbody>
+</table>
+</div>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="workspace-overview"><a class="header" href="#workspace-overview">Workspace Overview</a></h1>
+<p>DSP Studio is a Cargo workspace of five crates. Each has a single, clearly bounded responsibility.</p>
+<pre><code>dsp-studio/
+├── dsp-core/     Pure DSP — no IO, no UI
+├── dsp-io/       Storage + transmission layer
+├── dsp-app/      egui/eframe desktop application
+├── dsp-cli/      Headless gRPC server binary
+└── playground/   Lab binaries — benchmarks, integration tests, code examples
+</code></pre>
+<hr>
+<h2 id="dependency-graph"><a class="header" href="#dependency-graph">Dependency graph</a></h2>
+<pre><code>dsp-app ──────────────┐
+                       ▼
+dsp-cli ──────────► dsp-io ──────────► dsp-core
+                       ▲
+playground ────────────┘
+</code></pre>
+<p><code>dsp-core</code> has no dependencies inside the workspace — it is always safe to compile and test without a display server or storage backend.</p>
+<hr>
+<h2 id="crate-roles"><a class="header" href="#crate-roles">Crate roles</a></h2>
+<h3 id="dsp-core"><a class="header" href="#dsp-core"><code>dsp-core</code></a></h3>
+<p>Pure math and signal-generation primitives. Every function takes <code>&amp;[f32]</code> or <code>Vec&lt;f32&gt;</code> and returns <code>Vec&lt;f32&gt;</code>. No file I/O, no async, no egui.</p>
+<p>Key modules:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Module</th><th>Contents</th></tr>
+</thead>
+<tbody>
+<tr><td><code>signal_gen</code></td><td><code>SineWave</code>, <code>WhiteNoise</code> — deterministic generators for testing</td></tr>
+<tr><td><code>math::arithmetic</code></td><td><code>add_scalar</code>, <code>mul_scalar</code> — in-place channel-masked operations</td></tr>
+<tr><td><code>util::resampling</code></td><td><code>generate_peaks_parallel</code> — min-max LOD decimation via Rayon</td></tr>
+<tr><td><code>filter</code></td><td><em>(reserved)</em></td></tr>
+<tr><td><code>spectral</code></td><td><em>(reserved)</em></td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="dsp-io"><a class="header" href="#dsp-io"><code>dsp-io</code></a></h3>
+<p>The storage and transmission layer. Everything between bytes on disk and values in a renderer or DSP kernel lives here.</p>
+<p>Three planes:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Plane</th><th>Key types</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Archive</strong></td><td><code>zarr::StorageManager</code> — Zarr v3 reads/writes, LOD pyramid builder</td></tr>
+<tr><td><strong>Virtual</strong></td><td><code>virtual_channel::VirtualChannelStore</code> — mmap-backed named processed channels</td></tr>
+<tr><td><strong>Transmission</strong></td><td><code>transmission::ui::UiService</code>, <code>transmission::processing::ProcessingService</code>, <code>transmission::grpc_server</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>Supporting types:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Type</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td><code>recording_meta::RecordingMeta</code></td><td>JSON sidecar with session metadata</td></tr>
+<tr><td><code>processing_graph::ProcessingGraphSpec</code></td><td>Serializable DAG of DSP nodes</td></tr>
+<tr><td><code>processing_graph::GraphProcessor</code></td><td>Executes a spec over a full recording</td></tr>
+<tr><td><code>config::StorageConfig</code></td><td>Path + hardware parameters</td></tr>
+<tr><td><code>metadata::DatasetMetadata</code></td><td>LOD chain description</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="dsp-app"><a class="header" href="#dsp-app"><code>dsp-app</code></a></h3>
+<p>egui/eframe desktop GUI. Depends on <code>dsp-io</code> via an <code>IoBridge</code> that wraps all blocking I/O in tokio <code>spawn_blocking</code>. The render thread never blocks.</p>
+<p>State machine: <code>Idle → CheckingFile → Active(SessionState)</code>.</p>
+<hr>
+<h3 id="dsp-cli"><a class="header" href="#dsp-cli"><code>dsp-cli</code></a></h3>
+<p>Thin binary that starts a <code>MyTransmissionService</code> gRPC server. Accepts <code>--serve &lt;addr&gt;</code> to listen on a socket.</p>
+<pre><code class="language-bash">cargo run -p dsp-cli -- --serve [::1]:50051
+</code></pre>
+<hr>
+<h3 id="playground"><a class="header" href="#playground"><code>playground</code></a></h3>
+<p>Lab binaries (<code>cargo run -p lab --bin lab_NN_*</code>) covering:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Lab</th><th>Topic</th></tr>
+</thead>
+<tbody>
+<tr><td><code>lab_neural_generation</code></td><td>Generate a 1-hour 16ch synthetic recording</td></tr>
+<tr><td><code>lab_01_transmission</code></td><td>Basic <code>StorageManager</code> reads</td></tr>
+<tr><td><code>lab_02_signal</code></td><td>Signal generator inspection</td></tr>
+<tr><td><code>lab_03_ui_latency</code></td><td><code>UiService</code> viewport latency at multiple zoom levels</td></tr>
+<tr><td><code>lab_04_processing_throughput</code></td><td>Sliding-window batch throughput</td></tr>
+<tr><td><code>lab_05_mmap_bench</code></td><td><code>VirtualChannelStore</code> read/write benchmarks</td></tr>
+<tr><td><code>lab_06_live_hotswap</code></td><td>Composite fetch mixing physical + virtual channels</td></tr>
+<tr><td><code>lab_07_grpc_bench</code></td><td>gRPC endpoint latency benchmark</td></tr>
+<tr><td><code>lab_08_arith_test</code></td><td><code>ArithOpSpec</code> serialization round-trip</td></tr>
+<tr><td><code>lab_09_arith_full_test</code></td><td><code>GraphProcessor::evaluate_graph</code> correctness</td></tr>
+<tr><td><code>lab_10_grpc_e2e</code></td><td><strong>End-to-end gRPC correctness test</strong> (no prerequisite)</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="key-workspace-dependencies"><a class="header" href="#key-workspace-dependencies">Key workspace dependencies</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Crate</th><th>Version</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td><code>zarrs</code></td><td>0.23</td><td>Zarr v3 storage engine</td></tr>
+<tr><td><code>tonic</code></td><td>0.14</td><td>gRPC server + client</td></tr>
+<tr><td><code>tonic-prost</code></td><td>0.14</td><td>Prost codec for tonic</td></tr>
+<tr><td><code>prost</code></td><td>0.14</td><td>Protocol Buffers serialization</td></tr>
+<tr><td><code>memmap2</code></td><td>0.9</td><td>Memory-mapped file I/O</td></tr>
+<tr><td><code>rayon</code></td><td>1.10</td><td>Data-parallel resampling</td></tr>
+<tr><td><code>serde</code> / <code>serde_json</code></td><td>1</td><td>JSON metadata serialization</td></tr>
+<tr><td><code>tokio</code></td><td>1</td><td>Async runtime (gRPC + UI bridge)</td></tr>
+<tr><td><code>egui</code> / <code>eframe</code></td><td>0.34</td><td>Immediate-mode UI</td></tr>
+</tbody>
+</table>
+</div>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="storage-foundation"><a class="header" href="#storage-foundation">Storage Foundation</a></h1>
+<p>This page describes how DSP Studio stores, indexes, and retrieves recording data.</p>
+<hr>
+<h2 id="filesystem-layout"><a class="header" href="#filesystem-layout">Filesystem layout</a></h2>
+<pre><code class="language-text">~/datasets/neural_recording/
+  neural_recording.zarr/          ← Zarr v3 archive (directory store)
+    /raw                          ← [n_channels × total_samples] f32
+    /peaks/
+      lod_1                       ← [n_channels × (total_samples/16) × 2] f32
+      lod_2                       ← [n_channels × (total_samples/256) × 2] f32
+      lod_3                       ← [n_channels × (total_samples/4096) × 2] f32
+      …
+  neural_recording.json           ← RecordingMeta sidecar
+  processing.json                 ← ProcessingHistory log (optional)
+  tmp/
+    ch0_gain.mmap                 ← virtual channel (processing output)
+    ch1_drv.mmap
+</code></pre>
+<p>The <code>.zarr</code> directory is the Zarr v3 store. The <code>.json</code> sidecar and <code>processing.json</code> live <strong>next to</strong> it, not inside it. The <code>tmp/</code> directory is created automatically by <code>VirtualChannelStore</code>.</p>
+<hr>
+<h2 id="recordingmeta-sidecar"><a class="header" href="#recordingmeta-sidecar">RecordingMeta sidecar</a></h2>
+<p><code>recording_meta::RecordingMeta</code> is serialized to a pretty-printed JSON file whenever metadata changes. It stores high-level facts about the acquisition and the available virtual channels.</p>
+<pre><code class="language-json">{
+  "session_id": "a1b2c3d4-...",
+  "recording_name": "Pilot Session 01",
+  "recording_type": "EMG",
+  "description": "16-channel forearm EMG",
+  "sample_rate": 40000.0,
+  "n_channels": 16,
+  "total_samples": 144000000,
+  "channel_names": ["CH0", "CH1", "CH2", "..."],
+  "lod_levels_available": [1, 2, 3],
+  "created_at": "1713312000",
+  "virtual_channels": [
+    {
+      "name": "ch0_gain",
+      "source_channel_idx": 0,
+      "created_at": "1713315000"
+    }
+  ]
+}
+</code></pre>
+<p>Key invariants:</p>
+<ul>
+<li><code>channel_names.len() == n_channels</code></li>
+<li><code>lod_levels_available</code> lists only LOD levels whose Zarr arrays exist <strong>and are fully written</strong></li>
+<li><code>session_id</code> is generated once on first save and never changed</li>
+<li><code>virtual_channels</code> is updated by <code>run_full_recording</code> after a graph executes</li>
+</ul>
+<hr>
+<h2 id="processinghistory-log"><a class="header" href="#processinghistory-log">ProcessingHistory log</a></h2>
+<p><code>processing_history::ProcessingHistory</code> is serialized to <code>processing.json</code>. It maintains a per-channel log of every transformation applied to the data.</p>
+<pre><code class="language-json">{
+  "channels": {
+    "ch0_gain": [
+      {
+        "timestamp": "1713315000",
+        "label": "multiply",
+        "graph_spec_json": "{\"nodes\":[...], \"wires\":[...] }"
+      }
+    ]
+  }
+}
+</code></pre>
+<p>The <code>graph_spec_json</code> field contains the full <code>ProcessingGraphSpec</code> used to generate that specific virtual channel state, allowing for perfect reproducibility.</p>
+<h3 id="api"><a class="header" href="#api">API</a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_io::recording_meta::RecordingMeta;
+use std::path::PathBuf;
+
+let zarr_path = PathBuf::from("recording.zarr");
+
+// Load existing sidecar.
+let meta = RecordingMeta::load(&amp;zarr_path)?;
+
+// Create a new sidecar for a fresh recording.
+let mut meta = RecordingMeta::default_for(/*n_channels=*/ 16, /*total_samples=*/ 144_000_000, /*sample_rate=*/ 40_000.0);
+meta.recording_name = "My Session".into();
+meta.save(&amp;zarr_path)?;
+
+// Check if a sidecar exists.
+if RecordingMeta::exists(&amp;zarr_path) { /* … */ }
+
+// Get the sidecar path for a given zarr path.
+let json_path = RecordingMeta::sidecar_path(&amp;zarr_path); // "recording.json"
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="zarr-storage-storagemanager"><a class="header" href="#zarr-storage-storagemanager">Zarr storage (<code>StorageManager</code>)</a></h2>
+<p><code>zarr::StorageManager</code> wraps the Zarr v3 store. It is cheap to construct — it only holds an <code>Arc&lt;FilesystemStore&gt;</code>.</p>
+<h3 id="raw-data-array"><a class="header" href="#raw-data-array">Raw data array</a></h3>
+<p>Shape: <code>[n_channels, total_samples]</code>, dtype <code>f32</code>, chunked at <code>[n_channels, chunk_size]</code>.</p>
+<p>Default chunk size: <code>32 768</code> samples (~0.8 s at 40 kHz). Each chunk is independent, enabling random seeks with no full-scan overhead.</p>
+<h3 id="peak-pyramid-arrays"><a class="header" href="#peak-pyramid-arrays">Peak pyramid arrays</a></h3>
+<p>Each LOD level is a separate Zarr array at <code>/peaks/lod_N</code>:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Level</th><th>Shape</th><th>Decimation</th><th>Coverage at 40 kHz</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><code>[n_ch, total/16, 2]</code></td><td>16×</td><td>~0.4 ms/point</td></tr>
+<tr><td>2</td><td><code>[n_ch, total/256, 2]</code></td><td>256×</td><td>~6.4 ms/point</td></tr>
+<tr><td>3</td><td><code>[n_ch, total/4096, 2]</code></td><td>4096×</td><td>~102 ms/point</td></tr>
+<tr><td>4</td><td><code>[n_ch, total/65536, 2]</code></td><td>65536×</td><td>~1.6 s/point</td></tr>
+</tbody>
+</table>
+</div>
+<p>The <code>2</code> in the shape is the <code>[min, max]</code> pair.</p>
+<h3 id="creating-a-new-archive"><a class="header" href="#creating-a-new-archive">Creating a new archive</a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_io::config::StorageConfig;
+use dsp_io::metadata::DatasetMetadata;
+use dsp_io::zarr::StorageManager;
+use std::path::PathBuf;
+
+let mut config = StorageConfig::default();
+config.raw_archive_path = PathBuf::from("new_recording.zarr");
+config.channels = 16;
+config.sample_rate = 40_000;
+
+let total_samples = 40_000u64 * 3600; // 1 hour
+let metadata = DatasetMetadata::new_power_of_two(total_samples);
+let manager = StorageManager::new(config)?;
+
+// Initializes /raw and all /peaks/lod_N arrays (filled with zeros).
+manager.init_hierarchy(&amp;metadata)?;
+<span class="boring">}</span></code></pre>
+<h3 id="writing-raw-chunks"><a class="header" href="#writing-raw-chunks">Writing raw chunks</a></h3>
+<p>Data must be provided in <strong>channel-major</strong> layout: all samples for channel 0 first, then channel 1, etc.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// chunk_buf layout: [ch0_s0..ch0_sN, ch1_s0..ch1_sN, …]
+let mut chunk_buf = vec![0.0f32; n_channels * chunk_size];
+// … fill chunk_buf from your signal source …
+manager.write_raw_chunk(/*chunk_idx=*/ 0, &amp;chunk_buf)?;
+<span class="boring">}</span></code></pre>
+<h3 id="building-the-peak-pyramid"><a class="header" href="#building-the-peak-pyramid">Building the peak pyramid</a></h3>
+<p>Call once after all raw chunks have been written. Reads raw data in batches, computes min-max pairs via <code>dsp_core::util::resampling::generate_peaks_parallel</code>, and writes every LOD level.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>manager.build_peak_pyramid(&amp;metadata, |progress| {
+    println!("LOD build: {:.0}%", progress * 100.0);
+})?;
+<span class="boring">}</span></code></pre>
+<h3 id="reading-data"><a class="header" href="#reading-data">Reading data</a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Raw window — channel-major Vec&lt;f32&gt;
+let raw = manager.read_raw_window_masked(
+    /*start_sample=*/ 0,
+    /*count=*/        40_000,
+    /*channels=*/     &amp;[0u16, 1u16],
+)?;
+// raw = [ch0_s0..ch0_s39999, ch1_s0..ch1_s39999]
+
+// Peak window — channel-major, interleaved min/max pairs
+let peaks = manager.read_peak_window_masked(
+    /*lod_level=*/ 1,
+    /*lod_start=*/ 0,
+    /*lod_count=*/ 100,
+    /*channels=*/  &amp;[0u16],
+)?;
+// peaks = [ch0_min0, ch0_max0, ch0_min1, ch0_max1, …]
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="virtual-channels-virtualchannelstore"><a class="header" href="#virtual-channels-virtualchannelstore">Virtual channels (<code>VirtualChannelStore</code>)</a></h2>
+<p>Virtual channels are the outputs of processing graphs. Each is a flat <code>f32</code> array stored as a memory-mapped file.</p>
+<pre><code class="language-text">tmp/
+  ch0_gain.mmap    ← total_samples × sizeof(f32) bytes
+</code></pre>
+<p>The store lazily creates files on first write and reopens them across sessions.</p>
+<h3 id="api-1"><a class="header" href="#api-1">API</a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_io::virtual_channel::VirtualChannelStore;
+use std::path::PathBuf;
+
+let zarr_path = PathBuf::from("recording.zarr");
+let mut store = VirtualChannelStore::new(&amp;zarr_path)?;
+
+let total_samples = 144_000_000u64;
+
+// Open or create a channel (must be called before writing).
+store.open_or_create("ch0_gain", total_samples)?;
+
+// Write a window of processed samples.
+let processed = vec![1.0f32; 40_000];
+store.write_window("ch0_gain", /*start_sample=*/ 0, total_samples, &amp;processed)?;
+
+// Read a window back (returns zeros for samples not yet written).
+let readback = store.read_window("ch0_gain", 0, 40_000, total_samples)?;
+
+// Flush all channels to disk.
+store.flush_all()?;
+
+// List channels that have persisted .mmap files on disk.
+let names = store.persisted_channel_names()?;
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="lod-selection-heuristic"><a class="header" href="#lod-selection-heuristic">LOD selection heuristic</a></h2>
+<p><code>UiService::get_optimal_zarr_lod</code> selects the coarsest LOD that still provides
+at least 2 rendered points per screen pixel:</p>
+<pre><code>chosen_level = max L  where  (count / 16^L) ≥ (width_px / 2)
+</code></pre>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>count</th><th>width_px</th><th>selected LOD</th></tr>
+</thead>
+<tbody>
+<tr><td>40 000 (1 s)</td><td>1920</td><td>0 (raw)</td></tr>
+<tr><td>1 440 000 (36 s)</td><td>1920</td><td>1</td></tr>
+<tr><td>23 040 000 (576 s)</td><td>1920</td><td>2</td></tr>
+<tr><td>144 000 000 (1 h)</td><td>1920</td><td>3</td></tr>
+</tbody>
+</table>
+</div>
+<p>At LOD 0 the renderer draws one line per sample. At LOD &gt; 0 it draws a filled
+min/max envelope — the signal shape is preserved at any zoom level.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="data-access-guide"><a class="header" href="#data-access-guide">Data Access Guide</a></h1>
+<p>This page is for developers writing new modules that need to read or write recording data. It covers the three main access patterns with working code examples.</p>
+<hr>
+<h2 id="pattern-1--ui-viewport-fetch"><a class="header" href="#pattern-1--ui-viewport-fetch">Pattern 1 — UI viewport fetch</a></h2>
+<p>Use <code>UiService</code> when you need data for rendering. It automatically selects the right LOD level based on the viewport width, so the renderer never loads more samples than the screen can display.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_io::config::StorageConfig;
+use dsp_io::zarr::StorageManager;
+use dsp_io::metadata::DatasetMetadata;
+use dsp_io::recording_meta::RecordingMeta;
+use dsp_io::virtual_channel::VirtualChannelStore;
+use dsp_io::transmission::ui::UiService;
+use dsp_io::processing_graph::ChannelId;
+use std::path::PathBuf;
+
+let zarr_path = PathBuf::from("recording.zarr");
+
+// Open storage.
+let mut config = StorageConfig::default();
+config.raw_archive_path = zarr_path.clone();
+let manager = StorageManager::new(config)?;
+
+// Load metadata.
+let meta = RecordingMeta::load(&amp;zarr_path)?;
+let dataset = DatasetMetadata::new_power_of_two(meta.total_samples);
+
+// Optional: also serve virtual channels.
+let mut store = VirtualChannelStore::new(&amp;zarr_path)?;
+let mut ui = UiService::new(&amp;manager, Some(&amp;mut store));
+
+// Fetch a 1-second window at 1920px width for channels 0, 1, and a virtual channel.
+let channels = vec![
+    ChannelId::Physical(0),
+    ChannelId::Physical(1),
+    ChannelId::Virtual("ch0_gain".into()),
+];
+let view = ui.fetch_view(&amp;dataset, /*start=*/ 0, /*count=*/ 40_000, /*width_px=*/ 1920, &amp;channels)?;
+
+// Interpret the result.
+match view.lod_level {
+    0 =&gt; {
+        // Raw samples: view.data has view.points_per_channel floats per channel.
+        let ch0 = &amp;view.data[..view.points_per_channel];
+    }
+    _ =&gt; {
+        // Peak pairs: view.data has view.points_per_channel * 2 floats per channel.
+        // Each pair is (min, max) for a decimated window.
+        let ch0_peaks = &amp;view.data[..view.points_per_channel * 2];
+        for pair in ch0_peaks.chunks(2) {
+            let (lo, hi) = (pair[0], pair[1]);
+        }
+    }
+}
+<span class="boring">Ok::&lt;(), anyhow::Error&gt;(())
+</span><span class="boring">}</span></code></pre>
+<h3 id="viewresponse-fields"><a class="header" href="#viewresponse-fields"><code>ViewResponse</code> fields</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Type</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>data</code></td><td><code>Vec&lt;f32&gt;</code></td><td>Channel-major buffer (see layout below)</td></tr>
+<tr><td><code>lod_level</code></td><td><code>u8</code></td><td>0 = raw, N = 16^N× decimation</td></tr>
+<tr><td><code>decimation_ratio</code></td><td><code>u64</code></td><td>How many raw samples each point represents</td></tr>
+<tr><td><code>points_per_channel</code></td><td><code>usize</code></td><td>Number of data points (not floats) per channel</td></tr>
+<tr><td><code>channels_returned</code></td><td><code>Vec&lt;ChannelId&gt;</code></td><td>Order of channels in <code>data</code></td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Data layout:</strong></p>
+<pre><code class="language-text">lod_level == 0:
+  data = [ch0_s0, ch0_s1, …, ch0_sN,  ch1_s0, …,  chK_s0, …]
+          ─── points_per_channel floats per channel ───
+
+lod_level &gt; 0:
+  data = [ch0_min0, ch0_max0, ch0_min1, ch0_max1, …,  ch1_min0, ch1_max0, …]
+          ─── points_per_channel * 2 floats per channel ───
+</code></pre>
+<hr>
+<h2 id="pattern-2--dsp-kernel-batch-fetch"><a class="header" href="#pattern-2--dsp-kernel-batch-fetch">Pattern 2 — DSP kernel batch fetch</a></h2>
+<p>Use <code>ProcessingService</code> inside a DSP kernel or custom processor. It adds a <strong>surplus</strong> (overlap) on each side of the requested window to prevent filter edge effects.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_io::config::StorageConfig;
+use dsp_io::zarr::StorageManager;
+use dsp_io::virtual_channel::VirtualChannelStore;
+use dsp_io::transmission::processing::ProcessingService;
+use dsp_io::processing_graph::ChannelId;
+use std::path::PathBuf;
+
+let zarr_path = PathBuf::from("recording.zarr");
+let mut config = StorageConfig::default();
+config.raw_archive_path = zarr_path.clone();
+let manager = StorageManager::new(config)?;
+
+// Optionally open virtual channels for input too.
+let mut store = VirtualChannelStore::new(&amp;zarr_path)?;
+let mut service = ProcessingService::new(&amp;manager, Some(&amp;mut store));
+
+let batch_size  = 40_000u64; // 1 s at 40 kHz
+let surplus     = 1_024u64;  // filter transient margin
+let total       = 144_000_000u64;
+
+// Fetch returns:  channels * (batch_size + 2 * surplus) floats  (channel-major)
+let data = service.fetch_package_with_surplus(
+    /*start=*/  0i64,
+    /*count=*/  batch_size,
+    /*surplus=*/ surplus,
+    /*total_samples=*/ total,
+    &amp;[ChannelId::Physical(0), ChannelId::Virtual("ch0_gain".into())],
+)?;
+
+let window_len = (batch_size + 2 * surplus) as usize;
+
+// Slice out the core region, stripping surplus.
+let ch0_core = &amp;data[surplus as usize..surplus as usize + batch_size as usize];
+// ch1 starts at window_len.
+let ch1_core = &amp;data[window_len + surplus as usize..window_len + surplus as usize + batch_size as usize];
+<span class="boring">Ok::&lt;(), anyhow::Error&gt;(())
+</span><span class="boring">}</span></code></pre>
+<h3 id="choosing-the-surplus"><a class="header" href="#choosing-the-surplus">Choosing the surplus</a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Safe Nyquist-derived surplus for a given cutoff frequency.
+let surplus = service.calculate_nyquist_surplus(/*sample_rate=*/ 40_000, /*cutoff_hz=*/ 100.0);
+<span class="boring">}</span></code></pre>
+<p>The formula is <code>ceil((sample_rate / cutoff_hz) * 2.0)</code>. For a 100 Hz low-pass on a 40 kHz stream this gives 800 samples. Using <code>1 024</code> is a conservative default.</p>
+<hr>
+<h2 id="pattern-3--reading-virtual-channels-directly"><a class="header" href="#pattern-3--reading-virtual-channels-directly">Pattern 3 — Reading virtual channels directly</a></h2>
+<p>When you don’t need surplus windowing, read from <code>VirtualChannelStore</code> directly:</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_io::virtual_channel::VirtualChannelStore;
+use std::path::PathBuf;
+
+let zarr_path = PathBuf::from("recording.zarr");
+let mut store = VirtualChannelStore::new(&amp;zarr_path)?;
+
+// Returns a Vec&lt;f32&gt; of length `count`, zero-padded for unwritten regions.
+let samples = store.read_window(
+    /*name=*/          "ch0_gain",
+    /*start_sample=*/  80_000u64,
+    /*count=*/         40_000u64,
+    /*total_samples=*/ 144_000_000u64,
+)?;
+<span class="boring">Ok::&lt;(), anyhow::Error&gt;(())
+</span><span class="boring">}</span></code></pre>
+<hr>
+<h2 id="pattern-4--writing-a-new-virtual-channel"><a class="header" href="#pattern-4--writing-a-new-virtual-channel">Pattern 4 — Writing a new virtual channel</a></h2>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_io::virtual_channel::VirtualChannelStore;
+use std::path::PathBuf;
+
+let zarr_path = PathBuf::from("recording.zarr");
+let mut store = VirtualChannelStore::new(&amp;zarr_path)?;
+let total_samples = 144_000_000u64;
+
+// Must be called before the first write.
+store.open_or_create("my_output", total_samples)?;
+
+// Write in whatever batch size you like.
+let batch = vec![0.5f32; 40_000];
+store.write_window("my_output", /*start=*/ 0, total_samples, &amp;batch)?;
+
+// Sync to disk when done.
+store.flush_all()?;
+<span class="boring">Ok::&lt;(), anyhow::Error&gt;(())
+</span><span class="boring">}</span></code></pre>
+<hr>
+<h2 id="pattern-5--raw-zarr-reads-no-overhead"><a class="header" href="#pattern-5--raw-zarr-reads-no-overhead">Pattern 5 — Raw Zarr reads (no overhead)</a></h2>
+<p>For maximum control, bypass the service layer and call <code>StorageManager</code> directly:</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_io::config::StorageConfig;
+use dsp_io::zarr::StorageManager;
+use std::path::PathBuf;
+
+let mut config = StorageConfig::default();
+config.raw_archive_path = PathBuf::from("recording.zarr");
+let manager = StorageManager::new(config)?;
+
+// Read raw samples for channels 0 and 3.
+// Returns channel-major Vec&lt;f32&gt;.
+let raw = manager.read_raw_window_masked(
+    /*start_sample=*/ 40_000u64,
+    /*count=*/        1_000u64,
+    /*channels=*/     &amp;[0u16, 3u16],
+)?;
+
+// Read LOD 1 peaks for channel 0.
+// Returns interleaved (min, max) pairs.
+let peaks = manager.read_peak_window_masked(
+    /*lod_level=*/ 1u8,
+    /*lod_start=*/ 100u64,   // index in LOD space, not sample space
+    /*lod_count=*/ 50u64,
+    /*channels=*/  &amp;[0u16],
+)?;
+<span class="boring">Ok::&lt;(), anyhow::Error&gt;(())
+</span><span class="boring">}</span></code></pre>
+<blockquote>
+<p><strong>Note on LOD indexing:</strong> <code>lod_start</code> and <code>lod_count</code> are in the decimated
+coordinate space. Multiply by <code>16^lod_level</code> to convert to sample indices.</p>
+</blockquote>
+<hr>
+<h2 id="channelid--addressing-channels"><a class="header" href="#channelid--addressing-channels"><code>ChannelId</code> — addressing channels</a></h2>
+<p>All service calls accept <code>&amp;[ChannelId]</code> rather than raw integers. This allows mixing physical and virtual channels in a single request.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_io::processing_graph::ChannelId;
+
+let ch0_physical = ChannelId::Physical(0);
+let ch_processed = ChannelId::Virtual("ch0_gain".into());
+<span class="boring">}</span></code></pre>
+<p>Over gRPC, <code>ChannelId</code> maps to the proto <code>oneof</code>:</p>
+<pre><code class="language-protobuf">message ChannelId {
+    oneof kind {
+        uint32 physical = 1;
+        string virtual  = 2;
+    }
+}
+</code></pre>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_io::proto::transmission::{channel_id, ChannelId as ProtoChannelId};
+
+let proto_physical = ProtoChannelId { kind: Some(channel_id::Kind::Physical(0)) };
+let proto_virtual  = ProtoChannelId { kind: Some(channel_id::Kind::Virtual("ch0_gain".into())) };
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="thread-safety"><a class="header" href="#thread-safety">Thread safety</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Type</th><th>Thread safety</th></tr>
+</thead>
+<tbody>
+<tr><td><code>StorageManager</code></td><td><code>Send + Sync</code> — share via <code>Arc</code></td></tr>
+<tr><td><code>VirtualChannelStore</code></td><td><code>Send</code> — one writer at a time; clone the store handle for concurrent readers</td></tr>
+<tr><td><code>UiService</code></td><td><code>Send</code> — <code>&amp;mut self</code> on <code>fetch_view</code>; one active fetch per service</td></tr>
+<tr><td><code>ProcessingService</code></td><td><code>Send</code> — <code>&amp;mut self</code>; one active fetch per service</td></tr>
+<tr><td><code>GraphProcessor</code></td><td><code>Send + Sync</code> — stateless spec; call <code>run_full_recording</code> on any thread</td></tr>
+</tbody>
+</table>
+</div>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="processing-graph"><a class="header" href="#processing-graph">Processing Graph</a></h1>
+<p>The processing graph engine lets you express DSP operations as a serializable directed acyclic graph (DAG), execute it over a full recording in one call, and persist the results as named virtual channels (waveforms) or event tracks (sparse spikes).</p>
+<hr>
+<h2 id="key-types"><a class="header" href="#key-types">Key types</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Type</th><th>Role</th></tr>
+</thead>
+<tbody>
+<tr><td><code>ProcessingGraphSpec</code></td><td>Serializable spec — nodes + wires + sample rate</td></tr>
+<tr><td><code>SpecNode</code></td><td>One node in the DAG</td></tr>
+<tr><td><code>SpecWire</code></td><td>Directed edge from one node’s output pin to another’s input pin</td></tr>
+<tr><td><code>GraphProcessor</code></td><td>Executes a spec over a full recording</td></tr>
+<tr><td><code>ChannelId</code></td><td>Addresses physical or virtual channels uniformly</td></tr>
+<tr><td><code>SignalValue</code></td><td>Typed wire payload (Waveform or Events)</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="node-types"><a class="header" href="#node-types">Node types</a></h2>
+<h3 id="source-nodes-no-inputs"><a class="header" href="#source-nodes-no-inputs">Source nodes (no inputs)</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Variant</th><th>Output pins</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>SpecNode::Channel { id }</code></td><td>1</td><td>Emits one channel’s samples</td></tr>
+<tr><td><code>SpecNode::MultiChannel { ids }</code></td><td>N</td><td>Emits N channels; output pin K → <code>ids[K]</code></td></tr>
+<tr><td><code>SpecNode::Float { value }</code></td><td>1</td><td>Constant scalar repeated for every sample</td></tr>
+<tr><td><code>SpecNode::Bool { value }</code></td><td>1</td><td>Constant <code>0.0</code> (false) or <code>1.0</code> (true)</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="transform-nodes-waveform--waveform"><a class="header" href="#transform-nodes-waveform--waveform">Transform nodes (Waveform → Waveform)</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Variant</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>SpecNode::Arithmetic { op }</code></td><td>Element-wise <code>Add, Subtract, Multiply, Divide</code></td></tr>
+<tr><td><code>SpecNode::SosFilter { .. }</code></td><td>IIR filter via Second-Order Sections cascade</td></tr>
+<tr><td><code>SpecNode::Butterworth { .. }</code></td><td>Designed Butterworth filter (LP, HP, BP, BS)</td></tr>
+<tr><td><code>SpecNode::MovingAverage { .. }</code></td><td>Uniform boxcar smoothing</td></tr>
+<tr><td><code>SpecNode::MedianFilter { .. }</code></td><td>Non-linear spike/noise rejection</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="detection-nodes-waveform--events"><a class="header" href="#detection-nodes-waveform--events">Detection nodes (Waveform → Events)</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Variant</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>SpecNode::SpikeDetector { .. }</code></td><td>Threshold-crossing event generator</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="sink-nodes-write-outputs"><a class="header" href="#sink-nodes-write-outputs">Sink nodes (write outputs)</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Variant</th><th>Input pins</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>SpecNode::Output { source_id }</code></td><td>1</td><td>Writes to <code>ch{N:02}_drv</code> (destructive)</td></tr>
+<tr><td><code>SpecNode::Fork { source_id, name }</code></td><td>1</td><td>Writes to an explicitly named channel</td></tr>
+<tr><td><code>SpecNode::EventsOutput { track_name, .. }</code></td><td>1</td><td>Accumulates events and writes to Zarr archive</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="executing-a-graph"><a class="header" href="#executing-a-graph">Executing a graph</a></h2>
+<p><code>GraphProcessor::run_full_recording</code> drives the sliding-window loop. It implements <strong>Surplus Windowing</strong> to prevent digital filtering artifacts (edge effects) at batch boundaries.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let processor = GraphProcessor::new(spec);
+let virtual_channels = processor.run_full_recording(
+    &amp;manager,
+    total_samples,
+    start_sample,
+    count,
+    /*batch_size=*/ 40_000,
+    /*surplus=*/    1_024,   // Margin for filter transients
+    &amp;mut store,
+    Some(zarr_path),         // Appends to processing.json history
+    |progress| println!("{:.0}%", progress * 100.0),
+)?;
+<span class="boring">}</span></code></pre>
+<h3 id="surplus-model"><a class="header" href="#surplus-model">Surplus Model</a></h3>
+<p>For each batch, the processor fetches <code>batch_size + 2 * surplus</code> samples. Filters are evaluated over this full window, but only the central <code>batch_size</code> region is written to the output file. This ensures that every sample in the output was computed with sufficient context (look-ahead and look-behind).</p>
+<hr>
+<h2 id="json-representation"><a class="header" href="#json-representation">JSON representation</a></h2>
+<p>Example JSON for a low-pass filtered output:</p>
+<pre><code class="language-json">{
+  "nodes": [
+    { "Channel": { "id": { "Physical": 0 } } },
+    { "Butterworth": { "order": 4, "response": { "LowPass": { "cutoff": 1000.0 } }, "filtfilt": true } },
+    { "Output": { "source_id": { "Physical": 0 } } }
+  ],
+  "wires": [
+    { "from_node": 0, "from_output": 0, "to_node": 1, "to_input": 0 },
+    { "from_node": 1, "from_output": 0, "to_node": 2, "to_input": 0 }
+  ],
+  "sample_rate": 40000.0
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="grpc-api"><a class="header" href="#grpc-api">gRPC API</a></h1>
+<p>DSP Studio exposes a tonic gRPC service (<code>TransmissionService</code>) that provides remote access to every storage and processing operation. The server runs in <code>dsp-cli</code>; clients can be written in any language with gRPC support.</p>
+<hr>
+<h2 id="proto-definition"><a class="header" href="#proto-definition">Proto definition</a></h2>
+<pre><code class="language-protobuf">syntax = "proto3";
+package dsp_studio.transmission;
+
+service TransmissionService {
+    rpc OpenFile          (OpenFileRequest)   returns (RecordingMeta);
+    rpc SaveMetadata      (SaveMetadataRequest) returns (Empty);
+    rpc FetchView         (ViewRequest)       returns (ViewResponse);
+    rpc FetchRaw          (ViewRequest)       returns (ViewResponse);
+    rpc RunProcessingGraph(RunGraphRequest)   returns (stream ProcessingResponse);
+}
+</code></pre>
+<p>The <code>.proto</code> file lives at <code>dsp-io/proto/transmission.proto</code>. Generated Rust stubs are available at <code>dsp_io::proto::transmission</code>.</p>
+<hr>
+<h2 id="starting-the-server"><a class="header" href="#starting-the-server">Starting the server</a></h2>
+<pre><code class="language-bash"># Headless (dsp-cli)
+cargo run -p dsp-cli -- --serve [::1]:50051
+
+# In-process (tests, labs)
+use dsp_io::transmission::grpc_server::start_grpc_server;
+let addr = "[::1]:50051".parse()?;
+tokio::spawn(async move { start_grpc_server(addr).await.unwrap() });
+</code></pre>
+<hr>
+<h2 id="connecting-a-rust-client"><a class="header" href="#connecting-a-rust-client">Connecting a Rust client</a></h2>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_io::proto::transmission::transmission_service_client::TransmissionServiceClient;
+
+let mut client = TransmissionServiceClient::connect("http://[::1]:50051").await?;
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="endpoints"><a class="header" href="#endpoints">Endpoints</a></h2>
+<h3 id="openfile"><a class="header" href="#openfile"><code>OpenFile</code></a></h3>
+<p>Loads the <code>RecordingMeta</code> sidecar for a recording.</p>
+<p><strong>Request</strong></p>
+<pre><code class="language-protobuf">message OpenFileRequest { string path = 1; }
+</code></pre>
+<p><code>path</code> is the path to the <code>.zarr</code> directory.</p>
+<p><strong>Response:</strong> <code>RecordingMeta</code> — see <a href="#storage-foundation">Storage Foundation</a> for the JSON equivalent.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let meta = client.open_file(OpenFileRequest {
+    path: "data/lab/neural_recording.zarr".into(),
+}).await?.into_inner();
+
+println!("{}ch @ {}Hz, {} samples", meta.n_channels, meta.sample_rate, meta.total_samples);
+println!("LOD levels: {:?}", meta.lod_levels_available);
+<span class="boring">}</span></code></pre>
+<hr>
+<h3 id="savemetadata"><a class="header" href="#savemetadata"><code>SaveMetadata</code></a></h3>
+<p>Persists an updated <code>RecordingMeta</code> sidecar. Use this after renaming channels or adding virtual channel entries.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut meta = /* from OpenFile */;
+meta.description = "Updated description".into();
+
+client.save_metadata(SaveMetadataRequest {
+    zarr_path: "data/lab/neural_recording.zarr".into(),
+    meta: Some(meta),
+}).await?;
+<span class="boring">}</span></code></pre>
+<hr>
+<h3 id="fetchview"><a class="header" href="#fetchview"><code>FetchView</code></a></h3>
+<p>Returns a viewport of data. Automatically selects the right LOD level.</p>
+<p><strong>Request</strong></p>
+<pre><code class="language-protobuf">message ViewRequest {
+    string zarr_path  = 1;
+    uint64 start_sample = 2;
+    uint64 count        = 3;
+    uint32 width_px     = 4;
+    repeated ChannelId channels = 5;
+}
+</code></pre>
+<p><strong>Response</strong></p>
+<pre><code class="language-protobuf">message ViewResponse {
+    repeated float data            = 1;  // see layout below
+    uint32         lod_level       = 2;
+    uint64         decimation_ratio = 3;
+    uint64         points_per_channel = 4;
+    repeated ChannelId channels_returned = 5;
+}
+</code></pre>
+<p><strong>Data layout:</strong></p>
+<pre><code class="language-text">lod_level == 0 (raw):
+  data[i * points_per_channel .. (i+1) * points_per_channel]  →  channel i raw samples
+
+lod_level &gt; 0 (peaks):
+  data[i * points_per_channel*2 .. (i+1) * points_per_channel*2]  →  channel i min/max pairs
+  Each pair: [min, max]
+</code></pre>
+<p><strong>Rust example:</strong></p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_io::proto::transmission::{channel_id, ChannelId, ViewRequest};
+
+fn physical(idx: u32) -&gt; ChannelId {
+    ChannelId { kind: Some(channel_id::Kind::Physical(idx)) }
+}
+fn virtual_ch(name: &amp;str) -&gt; ChannelId {
+    ChannelId { kind: Some(channel_id::Kind::Virtual(name.into())) }
+}
+
+let resp = client.fetch_view(ViewRequest {
+    zarr_path: "recording.zarr".into(),
+    start_sample: 0,
+    count: 40_000,       // 1 second
+    width_px: 1920,
+    channels: vec![physical(0), physical(1), virtual_ch("ch0_gain")],
+}).await?.into_inner();
+
+let pts = resp.points_per_channel as usize;
+if resp.lod_level == 0 {
+    let ch0_samples = &amp;resp.data[..pts];
+} else {
+    let ch0_peaks: Vec&lt;(f32, f32)&gt; = resp.data[..pts*2]
+        .chunks(2).map(|p| (p[0], p[1])).collect();
+}
+<span class="boring">}</span></code></pre>
+<hr>
+<h3 id="fetchraw"><a class="header" href="#fetchraw"><code>FetchRaw</code></a></h3>
+<p>Identical to <code>FetchView</code> — same request, same response, same LOD logic. Exists as a semantic alias for callers that only want non-decimated data (they should set <code>width_px</code> equal to <code>count</code> to force LOD 0).</p>
+<hr>
+<h3 id="runprocessinggraph"><a class="header" href="#runprocessinggraph"><code>RunProcessingGraph</code></a></h3>
+<p>Executes a <code>ProcessingGraphSpec</code> over a recording and streams progress.</p>
+<p><strong>Request</strong></p>
+<pre><code class="language-protobuf">message RunGraphRequest {
+    string zarr_path       = 1;
+    string graph_spec_json = 2;  // JSON-serialized ProcessingGraphSpec
+    uint64 total_samples   = 3;
+    uint64 batch_size      = 4;
+    uint64 surplus         = 5;
+}
+</code></pre>
+<p><strong>Response stream:</strong></p>
+<pre><code class="language-protobuf">message ProcessingResponse {
+    oneof event {
+        ProcessingProgress progress = 1;
+        ProcessingComplete complete = 2;
+    }
+}
+
+message ProcessingProgress {
+    float  progress = 1;  // 0.0 → 1.0
+    string message  = 2;
+}
+
+message ProcessingComplete {
+    repeated VirtualChannelMeta virtual_channels = 1;
+}
+</code></pre>
+<p>The stream emits <code>Progress</code> events after each batch and a single <code>Complete</code> event when done. Clients should consume the stream until it closes.</p>
+<p><strong>Rust example:</strong></p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_io::processing_graph::{ChannelId, ProcessingGraphSpec, SpecNode, SpecWire, ArithOpSpec};
+use dsp_io::proto::transmission::{RunGraphRequest, processing_response};
+use tokio_stream::StreamExt;
+
+let spec = ProcessingGraphSpec {
+    nodes: vec![
+        SpecNode::Channel { id: ChannelId::Physical(0) },
+        SpecNode::Float   { value: 2.0 },
+        SpecNode::Arithmetic { op: ArithOpSpec::Multiply },
+        SpecNode::Output  { name: "ch0_gain".into(), source_id: ChannelId::Physical(0) },
+    ],
+    wires: vec![
+        SpecWire { from_node: 0, from_output: 0, to_node: 2, to_input: 0 },
+        SpecWire { from_node: 1, from_output: 0, to_node: 2, to_input: 1 },
+        SpecWire { from_node: 2, from_output: 0, to_node: 3, to_input: 0 },
+    ],
+    sample_rate: 40_000.0,
+};
+
+let mut stream = client.run_processing_graph(RunGraphRequest {
+    zarr_path: "recording.zarr".into(),
+    graph_spec_json: serde_json::to_string(&amp;spec)?,
+    total_samples: 144_000_000,
+    batch_size: 40_000,
+    surplus: 1_024,
+}).await?.into_inner();
+
+while let Some(event) = stream.next().await {
+    match event?.event {
+        Some(processing_response::Event::Progress(p)) =&gt; {
+            println!("{:.1}% — {}", p.progress * 100.0, p.message);
+        }
+        Some(processing_response::Event::Complete(c)) =&gt; {
+            println!("Done. Created {} virtual channel(s).", c.virtual_channels.len());
+            for vc in &amp;c.virtual_channels {
+                println!("  {} (from ch{})", vc.name, vc.source_channel_idx);
+            }
+        }
+        None =&gt; {}
+    }
+}
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="proto-message-reference"><a class="header" href="#proto-message-reference">Proto message reference</a></h2>
+<h3 id="channelid"><a class="header" href="#channelid"><code>ChannelId</code></a></h3>
+<pre><code class="language-protobuf">message ChannelId {
+    oneof kind {
+        uint32 physical = 1;   // index into the Zarr /raw array rows
+        string virtual  = 2;   // name of a .mmap file in tmp/
+    }
+}
+</code></pre>
+<h3 id="recordingmeta"><a class="header" href="#recordingmeta"><code>RecordingMeta</code></a></h3>
+<pre><code class="language-protobuf">message RecordingMeta {
+    string session_id     = 1;
+    string recording_name = 2;
+    string recording_type = 3;
+    string description    = 4;
+    float  sample_rate    = 5;
+    uint32 n_channels     = 6;
+    uint64 total_samples  = 7;
+    repeated string  channel_names        = 8;
+    repeated uint32  lod_levels_available = 9;
+    string created_at = 10;
+    repeated VirtualChannelMeta virtual_channels = 11;
+}
+
+message VirtualChannelMeta {
+    string name                 = 1;
+    uint32 source_channel_idx   = 2;
+    string created_at           = 3;
+}
+</code></pre>
+<hr>
+<h2 id="using-from-python-grpc-stub-generation"><a class="header" href="#using-from-python-grpc-stub-generation">Using from Python (gRPC stub generation)</a></h2>
+<p>Generate Python stubs from the <code>.proto</code> file:</p>
+<pre><code class="language-bash">python -m grpc_tools.protoc \
+  -I dsp-io/proto \
+  --python_out=. \
+  --grpc_python_out=. \
+  dsp-io/proto/transmission.proto
+</code></pre>
+<p>Then connect:</p>
+<pre><code class="language-python">import grpc
+import transmission_pb2 as pb
+import transmission_pb2_grpc as pbg
+
+channel = grpc.insecure_channel("[::1]:50051")
+stub = pbg.TransmissionServiceStub(channel)
+
+meta = stub.OpenFile(pb.OpenFileRequest(path="recording.zarr"))
+print(f"{meta.n_channels}ch @ {meta.sample_rate} Hz")
+
+view = stub.FetchView(pb.ViewRequest(
+    zarr_path="recording.zarr",
+    start_sample=0,
+    count=40_000,
+    width_px=1920,
+    channels=[pb.ChannelId(physical=0)],
+))
+samples = list(view.data)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="dsp-core-api"><a class="header" href="#dsp-core-api">dsp-core API</a></h1>
+<p><code>dsp-core</code> is the pure DSP primitives crate. It has no dependencies on file I/O, async runtimes, or GUI frameworks. Every function operates on plain <code>&amp;[f32]</code> or <code>Vec&lt;f32]</code> slices in <strong>channel-major</strong> layout.</p>
+<hr>
+<h2 id="data-layout-convention"><a class="header" href="#data-layout-convention">Data layout convention</a></h2>
+<p>All multi-channel buffers use <strong>channel-major</strong> layout:</p>
+<pre><code class="language-text">buffer = [ch0_s0, ch0_s1, …, ch0_sN,  ch1_s0, ch1_s1, …, ch1_sN,  …]
+          ─────── channel 0 ──────────  ──────── channel 1 ──────────
+</code></pre>
+<p>This matches the Zarr <code>/raw</code> array’s in-memory representation and NumPy’s C-order with shape <code>[channels, samples]</code>.</p>
+<p>Functions that operate on a subset of channels accept:</p>
+<ul>
+<li><code>channel_mask: &amp;[u16]</code> — which channel indices to modify</li>
+<li><code>total_channels: usize</code> — total number of channels encoded in the buffer</li>
+</ul>
+<hr>
+<h2 id="mocksignal--deterministic-signal-generators"><a class="header" href="#mocksignal--deterministic-signal-generators"><code>mock::signal</code> — Deterministic signal generators</a></h2>
+<p>All generators implement the <code>SignalGenerator</code> trait:</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub trait SignalGenerator {
+    fn fill_buffer(&amp;mut self, buffer: &amp;mut [f32], channels: usize);
+}
+<span class="boring">}</span></code></pre>
+<p>Each call advances the generator’s internal phase, producing a continuous stream across successive calls.</p>
+<h3 id="sinewave"><a class="header" href="#sinewave"><code>SineWave</code></a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_core::mock::signal::{SignalGenerator, SineWave};
+
+let mut gen = SineWave::new(
+    /*frequency=*/   440.0,     // Hz
+    /*sample_rate=*/ 40_000.0,  // Hz
+    /*amplitude=*/   1.0,
+);
+
+let mut buf = vec![0.0f32; 40_000]; // 1 channel × 1 second
+gen.fill_buffer(&amp;mut buf, 1);
+<span class="boring">}</span></code></pre>
+<h3 id="whitenoise"><a class="header" href="#whitenoise"><code>WhiteNoise</code></a></h3>
+<p>Deterministic Xorshift PRNG — identical output for the same seed across platforms and compiler versions.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_core::mock::signal::{SignalGenerator, WhiteNoise};
+
+let mut noise = WhiteNoise::new(/*seed=*/ 42, /*amplitude=*/ 0.1);
+let mut buf   = vec![0.0f32; 40_000];
+noise.fill_buffer(&amp;mut buf, 1);
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="matharithmetic--in-place-channel-masked-operations"><a class="header" href="#matharithmetic--in-place-channel-masked-operations"><code>math::arithmetic</code> — In-place channel-masked operations</a></h2>
+<p>All functions mutate the buffer in place and skip channels not in the mask.</p>
+<h3 id="add_scalar--mul_scalar"><a class="header" href="#add_scalar--mul_scalar"><code>add_scalar</code> / <code>mul_scalar</code></a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_core::math::arithmetic::{add_scalar, mul_scalar};
+
+// 2 channels × 4 samples
+let mut data = vec![1.0f32; 8];
+// Add 10.0 only to channel 1.
+add_scalar(&amp;mut data, 10.0, &amp;[1u16], /*total_channels=*/ 2);
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="filter--digital-filters"><a class="header" href="#filter--digital-filters"><code>filter</code> — Digital Filters</a></h2>
+<p>Comprehensive bank of FIR and IIR filters.</p>
+<h3 id="iir-filters-sos"><a class="header" href="#iir-filters-sos">IIR Filters (SOS)</a></h3>
+<p>Designed via Butterworth, Chebyshev, or Bessel prototypes. Supports causal (<code>apply</code>) and zero-phase (<code>apply_filtfilt</code>) filtering.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_core::filter::{butterworth, FilterResponse};
+
+let filter = butterworth(
+    /*order=*/ 4, 
+    FilterResponse::LowPass { cutoff: 1000.0 }, 
+    /*fs=*/ 40000.0
+);
+
+let filtered = filter.apply_f32(&amp;raw_data);
+<span class="boring">}</span></code></pre>
+<h3 id="fir-filters"><a class="header" href="#fir-filters">FIR Filters</a></h3>
+<p>Automatic selection between direct convolution (for short kernels) and FFT-based overlap-add (for long kernels).</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_core::filter::filter_channels_fir;
+
+let coeffs = [0.1, 0.2, 0.4, 0.2, 0.1];
+let filtered = filter_channels_fir(&amp;data, n_channels, &amp;coeffs, /*center=*/ true);
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="detection--sparse-event-detection"><a class="header" href="#detection--sparse-event-detection"><code>detection</code> — Sparse Event Detection</a></h2>
+<p>High-performance, parallelized detectors for finding triggers in dense waveforms.</p>
+<h3 id="singlethresholddetector"><a class="header" href="#singlethresholddetector"><code>SingleThresholdDetector</code></a></h3>
+<p>Triggers when a signal crosses a fixed value. Supports positive, negative, or both directions.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_core::detection::single::SingleThresholdDetector;
+use dsp_core::detection::{CrossingDirection, DetectionDetector};
+
+let detector = SingleThresholdDetector::new(
+    /*threshold=*/ 0.5,
+    CrossingDirection::Positive,
+    /*refractory=*/ 40, // samples
+    /*label_pos=*/ 1,
+    /*label_neg=*/ 2,
+);
+
+let events = detector.detect(&amp;data, n_channels, /*start_sample=*/ 0);
+// Returns Vec&lt;DetectedEvent&gt; where each event is [sample, channel, label]
+<span class="boring">}</span></code></pre>
+<h3 id="doublethresholddetector"><a class="header" href="#doublethresholddetector"><code>DoubleThresholdDetector</code></a></h3>
+<p>Supports <strong>Hysteresis</strong> (Schmitt trigger) and <strong>Window</strong> (enter/exit) modes.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_core::detection::double::{DoubleThresholdDetector, DoubleThresholdMode};
+
+let detector = DoubleThresholdDetector::new(
+    /*low=*/  -0.2,
+    /*high=*/  0.8,
+    DoubleThresholdMode::Hysteresis,
+    /*refractory=*/ 20,
+    /*label_high=*/ 10,
+    /*label_low=*/  20,
+);
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="utilresampling--min-max-peak-decimation"><a class="header" href="#utilresampling--min-max-peak-decimation"><code>util::resampling</code> — Min-max peak decimation</a></h2>
+<p>Used to produce LOD data for waveform rendering. Drawing min-max pairs preserves every signal spike visually regardless of zoom level.</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use dsp_core::util::resampling::generate_peaks_parallel;
+
+let peaks = generate_peaks_parallel(&amp;data, n_channels, /*ratio=*/ 40);
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="writing-a-new-dsp-core-module"><a class="header" href="#writing-a-new-dsp-core-module">Writing a new <code>dsp-core</code> module</a></h2>
+<ol>
+<li>Add a file in <code>dsp-core/src/&lt;module&gt;.rs</code>.</li>
+<li>Declare it in <code>dsp-core/src/lib.rs</code> with <code>pub mod &lt;module&gt;;</code>.</li>
+<li>Use <strong>Rayon</strong> for multi-channel parallelism (<code>into_par_iter</code>).</li>
+<li>Keep functions pure (no I/O) and operate on f32/f64 slices.</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="ui-architecture"><a class="header" href="#ui-architecture">UI Architecture</a></h1>
+<p><code>dsp-app</code> is an eframe/egui desktop application. This page describes how the render loop, IO bridge, state machine, and view components are organized.</p>
+<hr>
+<h2 id="design-principles"><a class="header" href="#design-principles">Design principles</a></h2>
+<ol>
+<li><strong>No blocking IO on the render thread.</strong> All Zarr reads and processing graph execution run on a tokio blocking thread pool. The render thread only calls <code>try_recv()</code>.</li>
+<li><strong>Fetch only on viewport change.</strong> A new <code>FetchView</code> request is dispatched only when the navigator sliders actually move — no continuous IO loop.</li>
+<li><strong>Stale-while-revalidate.</strong> The last cached <code>ViewResponse</code> is always rendered at its original position while a new fetch is in flight — no blank flash between updates.</li>
+<li><strong>Separation of concerns.</strong> <code>WaveformView</code> is a stateless renderer. <code>TimeseriesLayout</code> owns the cache and fetch policy. <code>App::logic()</code> owns the bridge and state machine.</li>
+</ol>
+<hr>
+<h2 id="eframe-split-logic-and-ui"><a class="header" href="#eframe-split-logic-and-ui">eframe split: <code>logic()</code> and <code>ui()</code></a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Method</th><th>Called when</th><th>Rules</th></tr>
+</thead>
+<tbody>
+<tr><td><code>logic()</code></td><td>every frame, before painting</td><td>may not call UI widgets</td></tr>
+<tr><td><code>ui()</code></td><td>every frame, during painting</td><td>may not block</td></tr>
+</tbody>
+</table>
+</div>
+<p><code>logic()</code> polls the IO bridge and calls <code>ctx.request_repaint()</code> whenever new data arrives. This wakes eframe even if it is throttling the frame rate.</p>
+<hr>
+<h2 id="appstate-machine"><a class="header" href="#appstate-machine">AppState machine</a></h2>
+<pre><code class="language-text">Idle
+ │  File &gt; Open…
+ ▼
+CheckingFile          (spinner shown)
+ │  peak pyramid present?
+ ├─[no]──► PeakBuildDialog ──[Cancel]──► Idle
+ │              │ [Generate]
+ │              ▼
+ │          BuildingPeaks   (progress bar)
+ │              │ done
+ │              └────────────────────────────┐
+ │  peak pyramid OK?                         │
+ └────────────────────────────────────────► Active(SessionState)
+                                              │ File &gt; Close
+                                              ▼
+                                             Idle
+</code></pre>
+<h3 id="sessionstate"><a class="header" href="#sessionstate"><code>SessionState</code></a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub struct SessionState {
+    pub zarr_path: PathBuf,
+    pub meta: RecordingMeta,
+    pub dataset: DatasetMetadata,
+    pub display: Vec&lt;ChannelDisplay&gt;,         // physical channels
+    pub virtual_display: Vec&lt;ChannelDisplay&gt;, // virtual channels
+    pub view_start: u64,
+    pub view_width: u64,
+}
+<span class="boring">}</span></code></pre>
+<p><code>virtual_display</code> is kept in sync with <code>meta.virtual_channels</code> via <code>merge_virtual_channels()</code>, which is called after graph execution completes.</p>
+<hr>
+<h2 id="iobridge"><a class="header" href="#iobridge">IoBridge</a></h2>
+<p><code>IoBridge</code> owns a <code>tokio::runtime::Runtime</code> and two <code>std::sync::mpsc</code> channels.</p>
+<pre><code>Render thread                          Tokio blocking pool
+──────────────                         ─────────────────────
+bridge.send(IoRequest)  ─── mpsc ───►  handle_request()
+                                          │  StorageManager::…
+bridge.rx.try_recv()    ◄── mpsc ───   tx.send(IoResponse)
+</code></pre>
+<p><code>StorageManager</code> is constructed fresh for each request — it only wraps an <code>Arc&lt;FilesystemStore&gt;</code>, so construction is cheap.</p>
+<h3 id="backend-modes"><a class="header" href="#backend-modes">Backend modes</a></h3>
+<p><code>IoBridge</code> supports two backends selected at startup:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Mode</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>Local</code></td><td>Direct library calls to <code>dsp-io</code> — no network overhead</td></tr>
+<tr><td><code>Remote(url)</code></td><td>tonic gRPC client — connects to a running <code>dsp-cli</code> instance</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="request--response-summary"><a class="header" href="#request--response-summary">Request / Response summary</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Request</th><th>Response(s)</th></tr>
+</thead>
+<tbody>
+<tr><td><code>OpenFile(path)</code></td><td><code>FileOpened(meta, dataset)</code> or <code>PeakPyramidMissing</code> or <code>Error</code></td></tr>
+<tr><td><code>BuildPeakPyramid(path)</code></td><td><code>PeakBuildProgress(f32)</code> × N, then <code>PeakBuildComplete</code> or <code>Error</code></td></tr>
+<tr><td><code>FetchView { … }</code></td><td><code>ViewReady(ViewResponse)</code> or <code>Error</code></td></tr>
+<tr><td><code>SaveRecordingMeta { … }</code></td><td><code>MetaSaved</code> or <code>Error</code></td></tr>
+<tr><td><code>RunProcessingGraph { … }</code></td><td><code>GraphProgress(f32)</code> × N, then <code>GraphComplete(Vec&lt;VirtualChannelMeta&gt;)</code> or <code>Error</code></td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="timeseries-view-components"><a class="header" href="#timeseries-view-components">Timeseries view components</a></h2>
+<pre><code>TimeseriesLayout  (owns ViewResponse cache + fetch state)
+│
+├── WaveformView  (stateless renderer — takes Option&lt;&amp;ViewResponse&gt;)
+│     └── one egui Plot per visible channel (stacked vertically)
+│
+├── Recording Info panel  (channel name editor, metadata display)
+│
+└── Navigation sliders (Window size, Position)
+</code></pre>
+<h3 id="waveformview-rendering"><a class="header" href="#waveformview-rendering">WaveformView rendering</a></h3>
+<p><code>WaveformView</code> renders from <code>Option&lt;&amp;ViewResponse&gt;</code> passed by <code>TimeseriesLayout</code>. If <code>None</code>, plots are drawn empty. Stale data (fetch in flight) renders at its original position — no layout jitter.</p>
+<ul>
+<li><code>allow_zoom(false)</code> and <code>allow_drag(false)</code> — sliders are the sole navigation authority.</li>
+<li>LOD 0 → single <code>Line</code>. LOD &gt; 0 → min/max <code>fill()</code> envelope.</li>
+<li>Y bounds are computed per-channel from the data with ±10% padding.</li>
+</ul>
+<h3 id="timeserieslayout-fetch-policy"><a class="header" href="#timeserieslayout-fetch-policy">TimeseriesLayout fetch policy</a></h3>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>if view_changed || (cache.is_none() &amp;&amp; !fetch_pending) {
+    try_fetch(session, bridge);
+}
+
+fn try_fetch() {
+    if fetch_pending { return; }
+    if view_start == last_fetched_start &amp;&amp; view_width == last_fetched_width { return; }
+    bridge.send(FetchView { … });
+    fetch_pending = true;
+}
+<span class="boring">}</span></code></pre>
+<p>At most one request is in flight at any time. <code>fetch_pending</code> is cleared only by <code>on_view_ready()</code> (success) or <code>on_fetch_error()</code> (failure).</p>
+<hr>
+<h2 id="node-graph-editor"><a class="header" href="#node-graph-editor">Node graph editor</a></h2>
+<p><code>NodeGraphLayout</code> wraps an <a href="https://github.com/zakarumych/egui-snarl">egui-snarl</a> canvas. Users wire nodes together visually; the layout serializes the result to a <code>ProcessingGraphSpec</code> and dispatches <code>IoRequest::RunProcessingGraph</code>.</p>
+<p>The graph editor is egui-only — it has no direct dependency on <code>dsp-io</code> types. The serializable <code>ProcessingGraphSpec</code> is the boundary between the two.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>

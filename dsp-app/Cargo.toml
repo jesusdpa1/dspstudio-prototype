@@ -1,0 +1,29 @@
+[package]
+name    = "dsp-app"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "dsp-studio"
+path = "src/main.rs"
+
+[dependencies]
+dsp-io       = { path = "../dsp-io" }
+dsp-core     = { path = "../dsp-core" }
+eframe       = { workspace = true }
+egui         = { workspace = true }
+egui_extras  = { workspace = true }
+egui_plot    = { workspace = true }
+egui_tiles   = { workspace = true }
+tokio        = { workspace = true }
+tonic        = { workspace = true, features = ["transport", "zstd"] }
+prost        = { workspace = true }
+tokio-stream = { version = "0.1", features = ["net"] }
+anyhow       = { workspace = true }
+serde_json   = { workspace = true }
+serde        = { workspace = true, features = ["derive"] }
+log          = { workspace = true }
+env_logger   = { workspace = true }
+rfd          = { workspace = true }
+egui-snarl   = { workspace = true }
+uuid         = { workspace = true }

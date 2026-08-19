@@ -1,0 +1,15 @@
+[package]
+name = "dsp-cli"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dsp-io = { path = "../dsp-io" }
+dsp-core = { path = "../dsp-core" }
+anyhow = { workspace = true }
+clap = { version = "4", features = ["derive"] }
+tokio = { workspace = true, features = ["full"] }
+log = { workspace = true }
+env_logger = { workspace = true }
+ratatui = "0.29"
+crossterm = "0.28"

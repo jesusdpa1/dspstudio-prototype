@@ -1,0 +1,36 @@
+# [package]
+# name = "dsp-studio"
+# version = "0.2.0"
+# edition = "2024"
+
+[workspace]
+members  = ["dsp-core", "dsp-io", "dsp-app", "playground", "dsp-cli"]
+resolver = "2"
+
+[workspace.dependencies]
+eframe = { version = "0.34", features = ["default", "glow", "wgpu"] }
+egui   = "0.34"
+egui_extras = { version = "0.34", features = ["svg", "image"] }
+egui_plot = "0.35"
+egui_tiles       = "0.15"
+env_logger = "0.11.10"
+log = "0.4.29"
+serde = "1.0.228"
+tokio       = { version = "1", features = ["rt-multi-thread", "macros"] }
+rayon       = "1.10"
+num-complex = "0.4"
+slotmap          = { version = "1", features = ["serde"] }
+zarrs            = { version = "0.23", features = ["zstd"] }
+zarrs_filesystem = "0.3"
+serde_json       = "1"
+anyhow           = "1"
+memmap2          = "0.9"
+indicatif        = "0.18"
+console          = "0.16"
+mmap-sync        = "2.0.0"
+tonic            = "0.14"
+prost            = "0.14"
+ureq             = { version = "3", features = ["json"] }
+uuid             = { version = "1", features = ["v4", "serde"] }
+rfd              = "0.17"
+egui-snarl       = { git = "https://github.com/zakarumych/egui-snarl", branch = "main", features = ["serde"] }
